@@ -26,9 +26,9 @@
             "buenos"
           ],
           "respuestas": [
-            "¡Hola! Bienvenido a RestauBOT. ¿Qué deseas solicitar hoy?",
-            "¡Hola! 👋 Estoy aquí para ayudarte con tu experiencia gastronómica.",
-            "¡Bienvenido! ¿En qué puedo servirte en RestauBOT?"
+            "¡Hola {nombre}! Bienvenido a RestauBOT. ¿Qué deseas solicitar hoy?",
+            "¡Hola {nombre}! 👋 Estoy aquí para ayudarte con tu experiencia gastronómica.",
+            "¡Bienvenido {nombre}! ¿En qué puedo servirte?"
           ],
           "siguiente_sugerencia": "Puedes preguntar sobre nuestro menú, hacer una reserva o realizar un pedido."
         },

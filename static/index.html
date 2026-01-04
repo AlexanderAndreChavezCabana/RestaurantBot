@@ -8,12 +8,30 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
 <body>
-    <div class="container">
+    <!-- Modald de Bienvenida -->
+    <div id="modalBienvenida" class="modal-bienvenida">
+        <div class="modal-bienvenida-content">
+            <h2>🍽️ RestaurantBot</h2>
+            <p>¡Bienvenido a nuestro restaurante!</p>
+            <form id="formNombre">
+                <input 
+                    type="text" 
+                    id="inputNombre" 
+                    placeholder="¿Cuál es tu nombre?"
+                    required
+                    autocomplete="off"
+                >
+                <button type="submit" class="btn-iniciar">Entrar</button>
+            </form>
+        </div>
+    </div>
+
+    <div class="container" id="chatContainer" style="display: none;">
         <!-- Header -->
         <header class="header">
             <div class="header-content">
                 <h1><i class="fas fa-utensils"></i> RestaurantBot</h1>
-                <p>Tu Asistente Virtual del Restaurante 🍽️</p>
+                <p id="nombreUsuarioHeader">Bienvenido</p>
             </div>
             <div class="header-actions">
                 <button id="btnInfo" class="btn-icon" title="Información">
@@ -28,7 +46,6 @@
         <!-- Chat Container -->
         <main class="chat-container">
             <div id="chatBox" class="chat-box">
-                <!-- Los mensajes se cargarán aquí -->
             </div>
         </main>
 
@@ -61,17 +78,6 @@
             <h2>📋 Información del Restaurante</h2>
             <div id="infoContent" class="info-content">
                 <p>Cargando información...</p>
-            </div>
-        </div>
-    </div>
-
-    <!-- Modal de Estadísticas -->
-    <div id="modalStats" class="modal">
-        <div class="modal-content">
-            <span class="close">&times;</span>
-            <h2>📊 Estadísticas de la Conversación</h2>
-            <div id="statsContent" class="stats-content">
-                <p>Cargando estadísticas...</p>
             </div>
         </div>
     </div>

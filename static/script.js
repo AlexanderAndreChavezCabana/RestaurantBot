@@ -6,13 +6,18 @@ const formChat = document.getElementById('formChat');
 const btnInfo = document.getElementById('btnInfo');
 const btnReiniciar = document.getElementById('btnReiniciar');
 const modalInfo = document.getElementById('modalInfo');
-const modalStats = document.getElementById('modalStats');
+const modalBienvenida = document.getElementById('modalBienvenida');
+const formNombre = document.getElementById('formNombre');
+const inputNombre = document.getElementById('inputNombre');
+const chatContainer = document.getElementById('chatContainer');
+const nombreUsuarioHeader = document.getElementById('nombreUsuarioHeader');
 
 let conversacionTerminada = false;
+let nombreUsuario = null;
 
-document.addEventListener('DOMContentLoaded', async () => {
-    await cargarBienvenida();
-    
+document.addEventListener('DOMContentLoaded', () => {
+    inputNombre.focus();
+    formNombre.addEventListener('submit', iniciarConversacion);
     formChat.addEventListener('submit', enviarMensaje);
     btnInfo.addEventListener('click', mostrarInfo);
     btnReiniciar.addEventListener('click', reiniciarBot);
@@ -23,11 +28,22 @@ document.addEventListener('DOMContentLoaded', async () => {
     
     window.addEventListener('click', (e) => {
         if (e.target === modalInfo) modalInfo.classList.remove('show');
-        if (e.target === modalStats) modalStats.classList.remove('show');
     });
+});
+
+async function iniciarConversacion(e) {
+    e.preventDefault();
+    
+    nombreUsuario = inputNombre.value.trim();
+    if (!nombreUsuario) return;
+    
+    modalBienvenida.style.display = 'none';
+    chatContainer.style.display = 'flex';
+    nombreUsuarioHeader.textContent = `Hola, ${nombreUsuario}`;
     
     inputMensaje.focus();
-});
+    await cargarBienvenida();
+}
 
 async function cargarBienvenida() {
     try {
@@ -59,7 +75,10 @@ async function enviarMensaje(e) {
         const response = await fetch(`${BASE_URL}/chat`, {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify({ texto })
+            body: JSON.stringify({ 
+                texto: texto,
+                nombre_usuario: nombreUsuario
+            })
         });
         
         if (!response.ok) {
@@ -80,7 +99,7 @@ async function enviarMensaje(e) {
         scrollAlFinal();
     } catch (error) {
         removerCarga();
-        agregarMensajeBot('❌ Error: No pude procesar tu mensaje. Intenta de nuevo.');
+        agregarMensajeBot('Error: No pude procesar tu mensaje. Intenta de nuevo.');
         inputMensaje.focus();
     }
 }
@@ -187,8 +206,11 @@ async function reiniciarBot() {
         inputMensaje.disabled = false;
         inputMensaje.placeholder = 'Escribe tu mensaje aquí...';
         habilitarBoton();
-        await cargarBienvenida();
-        inputMensaje.focus();
+        
+        inputNombre.value = '';
+        modalBienvenida.style.display = 'flex';
+        chatContainer.style.display = 'none';
+        inputNombre.focus();
     }
 }
 

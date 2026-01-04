@@ -17,6 +17,7 @@ class RestaurantBot:
 
     def __init__(self, archivo_flujos='flujos_restaurante.json'):
         self.archivo_flujos = archivo_flujos
+        self.nombre_usuario = None
         self.cargar_flujos()
         self.contexto = {
             'nombre_usuario': None,
@@ -92,6 +93,9 @@ class RestaurantBot:
 
     def generar_respuesta(self, intencion):
         respuesta = random.choice(intencion['respuestas'])
+
+        if self.nombre_usuario:
+            respuesta = respuesta.replace("{nombre}", self.nombre_usuario)
 
         if 'siguiente_sugerencia' in intencion:
             respuesta += f"\n\n💡 {intencion['siguiente_sugerencia']}"

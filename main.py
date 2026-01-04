@@ -11,6 +11,7 @@ from restaurant_bot import RestaurantBot
 
 class MensajeUsuario(BaseModel):
     texto: str
+    nombre_usuario: str = None
 
 class RespuestaBot(BaseModel):
     respuesta: str
@@ -53,6 +54,8 @@ async def procesar_mensaje(mensaje: MensajeUsuario):
         raise HTTPException(status_code=400, detail="El mensaje no puede estar vacío")
     
     try:
+        if mensaje.nombre_usuario:
+            bot_instance.nombre_usuario = mensaje.nombre_usuario
         respuesta, debe_terminar = bot_instance.procesar_entrada(mensaje.texto)
         historial = bot_instance.obtener_historial()
         estadisticas = bot_instance.obtener_estadisticas()
