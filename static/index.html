@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RestaurantBot 🍽️ - Chatbot Inteligente</title>
+    <link rel="stylesheet" href="/static/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <div class="container">
+        <!-- Header -->
+        <header class="header">
+            <div class="header-content">
+                <h1><i class="fas fa-utensils"></i> RestaurantBot</h1>
+                <p>Tu Asistente Virtual del Restaurante 🍽️</p>
+            </div>
+            <div class="header-actions">
+                <button id="btnInfo" class="btn-icon" title="Información">
+                    <i class="fas fa-info-circle"></i>
+                </button>
+                <button id="btnReiniciar" class="btn-icon" title="Reiniciar">
+                    <i class="fas fa-redo"></i>
+                </button>
+            </div>
+        </header>
+
+        <!-- Chat Container -->
+        <main class="chat-container">
+            <div id="chatBox" class="chat-box">
+                <!-- Los mensajes se cargarán aquí -->
+            </div>
+        </main>
+
+        <!-- Input Area -->
+        <footer class="input-area">
+            <form id="formChat" class="form-chat">
+                <div class="input-wrapper">
+                    <input 
+                        type="text" 
+                        id="inputMensaje" 
+                        class="input-message" 
+                        placeholder="Escribe tu mensaje aquí..."
+                        autocomplete="off"
+                    >
+                    <button type="submit" class="btn-enviar">
+                        <i class="fas fa-paper-plane"></i>
+                    </button>
+                </div>
+                <div class="info-text">
+                    <small>Puedes escribir: "hola", "menu", "reserva", "horarios", etc.</small>
+                </div>
+            </form>
+        </footer>
+    </div>
+
+    <!-- Modal de Información -->
+    <div id="modalInfo" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <h2>📋 Información del Restaurante</h2>
+            <div id="infoContent" class="info-content">
+                <p>Cargando información...</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal de Estadísticas -->
+    <div id="modalStats" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <h2>📊 Estadísticas de la Conversación</h2>
+            <div id="statsContent" class="stats-content">
+                <p>Cargando estadísticas...</p>
+            </div>
+        </div>
+    </div>
+
+    <script src="/static/script.js"></script>
+</body>
+</html>

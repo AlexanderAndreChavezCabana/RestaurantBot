@@ -1,0 +1,385 @@
+{
+  "configuracion": {
+    "umbral_similitud": 0.6,
+    "nombre_restaurante": "RestauBOT - Tu Restaurante Inteligente",
+    "mensaje_bienvenida": "¡Bienvenido a RestauBOT! 🍽️\nSoy tu asistente virtual del restaurante.\nPuedo ayudarte con:\n  1. Ver menú y platos disponibles\n  2. Hacer reservas y pedidos\n  3. Información del restaurante\n  4. Promociones especiales\n\nEscribe 'salir' para terminar la conversación.\n¿En qué puedo ayudarte?",
+    "mensaje_despedida": "¡Gracias por visitarnos! Esperamos verte pronto en RestauBOT. ¡Buen provecho! 🍴",
+    "mensaje_no_entendido": "Lo siento, no entendí tu solicitud. ¿Podrías reformularla?\nPuedo ayudarte con:\n  - Información sobre nuestro menú\n  - Reservas de mesa\n  - Realizar pedidos\n  - Conocer promociones\n  - Horarios y ubicación"
+  },
+
+  "flujos": {
+    "flujo_menu_pedidos": {
+      "nombre": "Menú y Pedidos",
+      "descripcion": "Flujo para consultas sobre menú y realización de pedidos",
+      "intenciones": [
+        {
+          "id": "saludo",
+          "patrones": [
+            "hola",
+            "buenos dias",
+            "buenas tardes",
+            "buenas noches",
+            "hey",
+            "que tal",
+            "saludos",
+            "hola bot",
+            "buenos"
+          ],
+          "respuestas": [
+            "¡Hola! Bienvenido a RestauBOT. ¿Qué deseas solicitar hoy?",
+            "¡Hola! 👋 Estoy aquí para ayudarte con tu experiencia gastronómica.",
+            "¡Bienvenido! ¿En qué puedo servirte en RestauBOT?"
+          ],
+          "siguiente_sugerencia": "Puedes preguntar sobre nuestro menú, hacer una reserva o realizar un pedido."
+        },
+        {
+          "id": "ver_menu",
+          "patrones": [
+            "menu",
+            "que tienen",
+            "que ofrecen",
+            "platos disponibles",
+            "que puedo pedir",
+            "opciones de comida",
+            "que hay para comer",
+            "catalogo",
+            "lista de platos"
+          ],
+          "respuestas": [
+            "📋 NUESTRO MENÚ ESPECIAL:\n\n🍕 PIZZAS:\n  • Pizza Margherita - S/. 28.00\n  • Pizza Pepperoni - S/. 32.00\n  • Pizza 4 Quesos - S/. 35.00\n  • Pizza Hawaiana - S/. 33.00\n\n🍔 HAMBURGUESAS:\n  • Burger Clásica - S/. 22.00\n  • Burger Premium (res) - S/. 28.00\n  • Burger Pollo Crujiente - S/. 24.00\n  • Burger Doble Queso - S/. 30.00\n\n🍝 PASTAS:\n  • Spaghetti a la Bolognesa - S/. 26.00\n  • Penne Alfredo - S/. 27.00\n  • Ravioles de Ricotta - S/. 28.00\n\n🥗 ENSALADAS:\n  • Ensalada César - S/. 18.00\n  • Ensalada Fresca - S/. 16.00\n  • Ensalada Caprese - S/. 20.00\n\n🍰 POSTRES:\n  • Tiramisú - S/. 12.00\n  • Brownie Chocolate - S/. 10.00\n  • Cheesecake - S/. 14.00\n\n🥤 BEBIDAS:\n  • Refrescos - S/. 5.00\n  • Jugo Natural - S/. 7.00\n  • Cerveza - S/. 8.00\n  • Vino - S/. 25.00\n\n¿Deseas pedir algo en particular?"
+          ],
+          "siguiente_sugerencia": "Menciona el nombre del plato que deseas."
+        },
+        {
+          "id": "plato_pizza",
+          "patrones": [
+            "pizza",
+            "margherita",
+            "pepperoni",
+            "quesos",
+            "hawaiana"
+          ],
+          "respuestas": [
+            "¡Excelente opción! 🍕 Nuestras pizzas son artesanales y preparadas al horno.\n\nTenemos:\n• Pizza Margherita (S/. 28)\n• Pizza Pepperoni (S/. 32)\n• Pizza 4 Quesos (S/. 35)\n• Pizza Hawaiana (S/. 33)\n\nTamaños: Pequeña, Mediana, Grande\n¿Cuál prefieres?"
+          ],
+          "siguiente_sugerencia": "Especifica el tamaño y la cantidad que deseas."
+        },
+        {
+          "id": "plato_hamburguesa",
+          "patrones": [
+            "hamburguesa",
+            "burger",
+            "hamburgesa",
+            "carne",
+            "pollo",
+            "crujiente"
+          ],
+          "respuestas": [
+            "¡Buena selección! 🍔 Nuestras hamburguesas son 100% caseras.\n\nOpciones disponibles:\n• Burger Clásica (S/. 22)\n• Burger Premium Res (S/. 28)\n• Burger Pollo Crujiente (S/. 24)\n• Burger Doble Queso (S/. 30)\n\n¿Cuál te gustaría pedir?"
+          ],
+          "siguiente_sugerencia": "Incluye refrescos o bebidas con tu pedido."
+        },
+        {
+          "id": "plato_pasta",
+          "patrones": [
+            "pasta",
+            "spaghetti",
+            "penne",
+            "ravioles",
+            "italian",
+            "bolognesa",
+            "alfredo"
+          ],
+          "respuestas": [
+            "¡Nuestras pastas son deliciosas! 🍝 Preparadas con ingredientes premium.\n\nEspecialidades:\n• Spaghetti a la Bolognesa (S/. 26)\n• Penne Alfredo (S/. 27)\n• Ravioles de Ricotta (S/. 28)\n\nTodas incluyen pan tostado y bebida. ¿Cuál deseas?"
+          ],
+          "siguiente_sugerencia": "¿Deseas agregar algún acompañamiento?"
+        },
+        {
+          "id": "agregar_bebida",
+          "patrones": [
+            "bebida",
+            "bebidas",
+            "refresco",
+            "cerveza",
+            "vino",
+            "jugo",
+            "agua",
+            "tomar algo"
+          ],
+          "respuestas": [
+            "¡Excelente! 🥤 Nuestras bebidas:\n\n• Refrescos (Coca, Fanta, Sprite) - S/. 5\n• Jugo Natural (Naranja, Piña, Mixto) - S/. 7\n• Cerveza (Pilsen, Cristal) - S/. 8\n• Vino Tinto/Blanco - S/. 25 botella\n• Agua con Gas/Sin Gas - S/. 3\n\n¿Cuál acompañará tu orden?"
+          ],
+          "siguiente_sugerencia": "¿Necesitas algo más? ¿Un postre quizás?"
+        },
+        {
+          "id": "agregar_postre",
+          "patrones": [
+            "postre",
+            "postres",
+            "dulce",
+            "tiramisu",
+            "brownie",
+            "cheesecake",
+            "chocolate",
+            "helado"
+          ],
+          "respuestas": [
+            "¡Perfecto para finalizar! 🍰 Nuestros postres caseros:\n\n• Tiramisú - S/. 12\n• Brownie de Chocolate - S/. 10\n• Cheesecake - S/. 14\n• Helado de Vainilla/Chocolate - S/. 8\n\n¿Cuál deseas agregar a tu pedido?"
+          ],
+          "siguiente_sugerencia": "¿Es todo? Puedo confirmar tu pedido."
+        },
+        {
+          "id": "confirmar_pedido",
+          "patrones": [
+            "confirmar",
+            "listo",
+            "es todo",
+            "eso es",
+            "si listo",
+            "confirma",
+            "realiza",
+            "procesar",
+            "enviar"
+          ],
+          "respuestas": [
+            "✅ ¡Perfecto! Tu pedido ha sido registrado.\n\nDetalles:\n📱 Te contactaremos en breve para confirmar cantidad y dirección\n⏱️ Tiempo de entrega: 30-45 minutos\n💰 Aceptamos efectivo, tarjeta y transferencia\n\n¡Gracias por tu compra! Pronto disfrutarás de RestauBOT. 🎉"
+          ],
+          "siguiente_sugerencia": "¿Necesitas algo más?"
+        },
+        {
+          "id": "cancelar_pedido",
+          "patrones": [
+            "cancelar",
+            "no quiero",
+            "olvida",
+            "quitar",
+            "remover",
+            "borrar"
+          ],
+          "respuestas": [
+            "Entendido. Se ha cancelado tu pedido. 😔\n\nNo hay problema. Estamos aquí cuando cambies de idea. ¿Hay algo más en lo que pueda ayudarte?"
+          ],
+          "siguiente_sugerencia": "Cuéntame si hay algo más que pueda hacer."
+        }
+      ]
+    },
+
+    "flujo_reservas": {
+      "nombre": "Reservas",
+      "descripcion": "Flujo para hacer reservas en el restaurante",
+      "intenciones": [
+        {
+          "id": "hacer_reserva",
+          "patrones": [
+            "reserva",
+            "reservar mesa",
+            "quiero reservar",
+            "hacer reserva",
+            "agendar",
+            "mesa para",
+            "una mesa",
+            "dos mesas",
+            "reservacion"
+          ],
+          "respuestas": [
+            "¡Perfecto! Vamos a hacer tu reserva. 📅\n\nPor favor, cuéntame:\n1️⃣ ¿Cuántas personas?\n2️⃣ ¿Qué fecha prefieres?\n3️⃣ ¿Qué hora?\n4️⃣ ¿Tu nombre y teléfono?\n\n(Ejemplo: \"Somos 4 personas, el sábado a las 19:00\")"
+          ],
+          "siguiente_sugerencia": "Proporciona los detalles de tu reserva."
+        },
+        {
+          "id": "detalles_reserva",
+          "patrones": [
+            "personas",
+            "personas",
+            "el sabado",
+            "el domingo",
+            "proxima semana",
+            "manana",
+            "hoy",
+            "19:00",
+            "20:00",
+            "19 horas",
+            "20 horas"
+          ],
+          "respuestas": [
+            "¡Excelente! He anotado los detalles de tu reserva.\n\n📋 Confirmación:\n✓ Mesa reservada\n✓ Tiempo de espera: Máximo 15 minutos\n✓ Te enviaremos SMS de confirmación\n✓ Puedes cancelar hasta 2 horas antes\n\n¡Te esperamos! Si no llegas a la hora, libera la mesa para otros clientes. 🤝"
+          ],
+          "siguiente_sugerencia": "¿Algo más que necesites?"
+        },
+        {
+          "id": "modificar_reserva",
+          "patrones": [
+            "modificar",
+            "cambiar reserva",
+            "cambiar fecha",
+            "cambiar hora",
+            "reprogramar",
+            "otro dia",
+            "otra hora"
+          ],
+          "respuestas": [
+            "Claro, puedo ayudarte a cambiar tu reserva. 🔄\n\nDime:\n• ¿Qué aspecto deseas cambiar? (fecha/hora/cantidad)\n• ¿Cuál sería la nueva información?\n\nModificaré tu reserva inmediatamente."
+          ],
+          "siguiente_sugerencia": "Proporciona los nuevos detalles."
+        },
+        {
+          "id": "cancelar_reserva",
+          "patrones": [
+            "cancelar reserva",
+            "no puedo venir",
+            "anular",
+            "cancelacion",
+            "no voy a poder",
+            "avisame"
+          ],
+          "respuestas": [
+            "Entendido. Hemos cancelado tu reserva. 😔\n\nNo hay problema. La mesa queda disponible para otros clientes.\nTe esperamos en otra ocasión. ¡Vuelve pronto! 🙏"
+          ],
+          "siguiente_sugerencia": "¿Hay algo más en lo que pueda ayudarte?"
+        }
+      ]
+    },
+
+    "flujo_informacion_restaurante": {
+      "nombre": "Información del Restaurante",
+      "descripcion": "Información sobre horarios, ubicación y características",
+      "intenciones": [
+        {
+          "id": "consultar_horario",
+          "patrones": [
+            "horario",
+            "hora",
+            "cuando abre",
+            "cuando cierran",
+            "que dias",
+            "dia cerrado",
+            "abierto",
+            "horarios"
+          ],
+          "respuestas": [
+            "🕐 HORARIOS DE ATENCIÓN:\n\n📅 Lunes a Viernes:\n   • Mediodía: 11:00 - 15:00\n   • Noche: 18:00 - 23:00\n\n📅 Sábado:\n   • Continuo: 11:00 - 23:30\n\n📅 Domingo:\n   • Continuo: 11:00 - 22:00\n\n❌ Cerrado: Lunes feriados especiales\n\n¿En qué horario deseas visitarnos?"
+          ],
+          "siguiente_sugerencia": "Puedo ayudarte con una reserva para esa hora."
+        },
+        {
+          "id": "consultar_ubicacion",
+          "patrones": [
+            "ubicacion",
+            "donde estan",
+            "donde queda",
+            "direccion",
+            "como llego",
+            "locacion",
+            "local"
+          ],
+          "respuestas": [
+            "📍 NUESTRA UBICACIÓN:\n\nRestauBOT - Restaurante Inteligente\nAvenida Principal 450, Miraflores\nLima, Perú\n\n📞 Teléfono: +51 1 2345678\n📧 Email: info@restaubot.pe\n\n🚗 Estacionamiento disponible\n🚕 Cerca de transporte público\n🗺️ Ver en Google Maps: restaubot.pe/maps\n\n¿Necesitas indicaciones o algo más?"
+          ],
+          "siguiente_sugerencia": "Puedo ayudarte a hacer una reserva."
+        },
+        {
+          "id": "consultar_ambiente",
+          "patrones": [
+            "ambiente",
+            "como es",
+            "caracteristicas",
+            "wifi",
+            "parking",
+            "estacionamiento",
+            "aire acondicionado",
+            "decoracion",
+            "diseño"
+          ],
+          "respuestas": [
+            "✨ CARACTERÍSTICAS DE RESTAUBOT:\n\n🎨 Ambiente moderno y acogedor\n🌐 WiFi gratis en todo el local\n🚗 Estacionamiento privado (20 espacios)\n❄️ Aire acondicionado en todas las áreas\n🎵 Música ambiental relajante\n📺 TV para eventos deportivos\n👨‍💼 Personal atento y profesional\n🎉 Ideal para grupos y celebraciones\n👶 Menú infantil disponible\n♿ Acceso para personas con discapacidad\n\n¿Te gustaría hacer una reserva?"
+          ],
+          "siguiente_sugerencia": "Podemos reservar una mesa especial si lo deseas."
+        },
+        {
+          "id": "consultar_metodos_pago",
+          "patrones": [
+            "pago",
+            "metodos de pago",
+            "como pago",
+            "tarjeta",
+            "efectivo",
+            "transferencia",
+            "yape",
+            "billetera"
+          ],
+          "respuestas": [
+            "💳 MÉTODOS DE PAGO ACEPTADOS:\n\n💵 Efectivo (Soles y Dólares)\n💳 Tarjetas de Crédito/Débito (Visa, MasterCard, Amex)\n📱 Billeteras digitales (Yape, Plin)\n🏦 Transferencia bancaria\n\nTodos nuestros métodos son seguros.\n¿Hay algo más que necesites?"
+          ],
+          "siguiente_sugerencia": "¿Necesitas hacer un pedido o una reserva?"
+        },
+        {
+          "id": "solicitar_factura",
+          "patrones": [
+            "factura",
+            "boleta",
+            "comprobante",
+            "ruc",
+            "documento"
+          ],
+          "respuestas": [
+            "📄 SÍ, emitimos facturas.\n\nPara solicitar factura:\n• Proporciona tu RUC o DNI\n• La enviaremos vía email\n• O la puedes retirar en el local\n\n¿Cuál es tu número de identificación?"
+          ],
+          "siguiente_sugerencia": "¿Hay algo más?"
+        },
+        {
+          "id": "consultar_promociones",
+          "patrones": [
+            "promocion",
+            "promociones",
+            "oferta",
+            "ofertás",
+            "descuento",
+            "descuentos",
+            "especial",
+            "cupón",
+            "cupon"
+          ],
+          "respuestas": [
+            "🎉 PROMOCIONES ESPECIALES:\n\n🌟 HAPPY HOUR (Lunes-Viernes 17:00-19:00):\n   • 20% en todas las bebidas\n   • 15% en entrada de cortesía\n\n🍕 MARTES DE PIZZA:\n   • 30% en cualquier pizza\n   • Válido toda la noche\n\n👥 GRUPO (4+ personas):\n   • 10% en total de la cuenta\n   • No aplica con otras promociones\n\n🎂 CUMPLEAÑERO:\n   • Postre gratis (con identificación)\n   • Brindis de la casa\n\n💳 APP RESTAUBOT:\n   • 5% en cada pedido\n   • Descuentos extra semanales\n\n¿Deseas aprovechar alguna promoción?"
+          ],
+          "siguiente_sugerencia": "Cuéntame tu situación para ofrecerte la mejor opción."
+        },
+        {
+          "id": "solicitar_wifi",
+          "patrones": [
+            "wifi",
+            "contraseña",
+            "internet",
+            "conexion",
+            "red"
+          ],
+          "respuestas": [
+            "📶 WiFi RESTAUBOT:\n\nRed: RestauBOT_Free\nContraseña: RestauBot2024!\n\nVelocidad: 100 Mbps\nDisponible en todo el local\n\n¿Tienes problemas de conexión?"
+          ],
+          "siguiente_sugerencia": "¿Hay algo más en lo que pueda ayudarte?"
+        },
+        {
+          "id": "despedida",
+          "patrones": [
+            "adios",
+            "chao",
+            "hasta luego",
+            "nos vemos",
+            "gracias",
+            "bye",
+            "salir",
+            "terminar",
+            "listo"
+          ],
+          "respuestas": [
+            "¡Gracias por visitarnos! Esperamos verte pronto en RestauBOT. ¡Que disfrutes! 🍽️",
+            "¡Hasta pronto! Nos vemos en RestauBOT. ¡Buen provecho! 🍴",
+            "¡Adiós! Gracias por confiar en nosotros. ¡Regresa pronto! 👋"
+          ],
+          "accion_especial": "terminar"
+        }
+      ]
+    }
+  }
+}
