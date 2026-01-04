@@ -14,7 +14,7 @@ RestaurantBot es un chatbot basado en reglas diseñado para asistentes virtuales
 sesion1/
 ├── main.py                     # Aplicación FastAPI
 ├── restaurant_bot.py           # Código del chatbot
-├── flujos_conversacion.json    # Mensajes y flujos (EDITABLE)
+├── flujos_conversacion.json    # Mensajes y flujos
 ├── test_chatbot.py             # Tests unitarios
 ├── requirements.txt            # Dependencias
 ├── README_CHATBOT.md           # Este archivo

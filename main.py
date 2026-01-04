@@ -1,6 +1,3 @@
-#!/usr/bin/env python
-# -*- coding: utf-8 -*-
-
 from fastapi import FastAPI, HTTPException
 from fastapi.staticfiles import StaticFiles
 from fastapi.responses import FileResponse
@@ -145,7 +142,7 @@ async def obtener_configuracion():
 
 @app.get("/health")
 async def health_check():
-    return {"status": "ok", "servicio": "RestaurantBot API", "version": "1.0.0"}
+    return {"status": "ok", "servicio": "RestaurantBot API", "version": "1.0.1"}
 
 if __name__ == "__main__":
     import uvicorn
