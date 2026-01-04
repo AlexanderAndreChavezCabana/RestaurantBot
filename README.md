@@ -1,5 +1,7 @@
 # RestaurantBot 🍽️ - Chatbot Inteligente para Restaurante
 
+![RestaurantBot](images/image.png)
+
 ## 📋 Descripción
 
 RestaurantBot es un chatbot basado en reglas diseñado para asistentes virtuales en restaurantes. Implementado en Python, permite manejar:
